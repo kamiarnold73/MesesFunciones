@@ -6,66 +6,49 @@
         {
             while (true)
             {
-                Console.WriteLine("Introducir un numero:");
-                string dato = Console.ReadLine();
 
-                int mes = 0;
-                bool sePudoConvertir = false;
-                sePudoConvertir = int.TryParse(dato, out mes);
-                if (sePudoConvertir)
+                Console.WriteLine("Ingrese un numero entre el 1 y 12 para obtener el mes:");
+                string input = Console.ReadLine();
 
+                if (int.TryParse(input, out int numeroMes))
                 {
-                    switch (mes)
+                    if (numeroMes >= 1 && numeroMes <= 12)
                     {
-                        case 1:
-                            Console.WriteLine("Enero");
-                            break;
-                        case 2:
-                            Console.WriteLine("Febrero");
-                            break;
-                        case 3:
-                            Console.WriteLine("Marzo");
-                            break;
-                        case 4:
-                            Console.WriteLine("Abril");
-                            break;
-                        case 5:
-                            Console.WriteLine("Mayo");
-                            break;
-                        case 6:
-                            Console.WriteLine("Junio");
-                            break;
-                        case 7:
-                            Console.WriteLine("Julio");
-                            break;
-                        case 8:
-                            Console.WriteLine("Agosto");
-                            break;
-                        case 9:
-                            Console.WriteLine("Septiembre");
-                            break;
-                        case 10:
-                            Console.WriteLine("Octubre");
-                            break;
-                        case 11:
-                            Console.WriteLine("Noviembre");
-                            break;
-                        case 12:
-                            Console.WriteLine("Diciembre");
-                            break;
-                        default:
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine($"Dato incorrecto: {dato}");
-                            Console.ResetColor();
-                            break;
+                        string nombreMes = ObtenerNombreDelMes(numeroMes);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"El mes {numeroMes} es: {nombreMes}");
                     }
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"El dato introducido es incorrecto: {dato}");
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("No valido: Porfavor introduzca un numero del 1 al 12");
+                    }
+
                     Console.ResetColor();
+                    Console.WriteLine();
                 }
+            }
+            static string ObtenerNombreDelMes(int mes)
+            {
+                string[] meses =
+                {
+                   "Enero",
+                   "Febrero",
+                   "Marzo",
+                   "Abil",
+                   "Mayo",
+                   "Junio",
+                   "Julio",
+                   "Agosto",
+                   "Septiembre",
+                   "Octubre",
+                   "Noviembre",
+                   "Diciembre"
+                };
+
+                return meses[mes - 1];
+
+
             }
         }
     }
